@@ -34,7 +34,13 @@ if ! [[ -f "$dir/${expected_sha}" ]]; then
     chmod +x "$our_temp_dir/zprint"
 
     mv "$our_temp_dir/zprint" "$dir/${expected_sha}"
+    cleanup_temp_dir
 fi
 
-cleanup_temp_dir
-exec "$dir/${expected_sha}" "$@"
+if [[ "${2-}" != "" ]]; then
+    exec "$dir/${expected_sha}" < "$1" > "$2"
+elif [[ "${1-}" != "" ]]; then
+    exec "$dir/${expected_sha}" < "$1"
+else
+    exec "$dir/${expected_sha}"
+fi
