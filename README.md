@@ -6,14 +6,15 @@ zprint-mode reformats files quickly (<100ms) because it uses [precompiled native
 
 ## Installation
 
-Download zprint-mode.el and save it somewhere where emacs can find it.
+Download zprint-mode.el and save it somewhere where emacs can find it, e.g. `~/.emacs.d/lisp/`.
 
 You only need zprint-mode.el - the zprint graalvm binary is downloaded automagically on first run.
 
 You will probably need to add that directory to Emacs's load path:
 
 ```
-(add-to-list 'load-path "<path-to-zprint-mode.el>")
+# e.g.
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 ```
 
 Then you will need to require the package:
