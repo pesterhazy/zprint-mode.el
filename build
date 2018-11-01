@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-REPLACEMENT=$(cat zprintf | python minifier.py | ./quote-js)
+REPLACEMENT=$(cat zprint-filter | python minifier.py | ./quote-js)
 
 export REPLACEMENT
 
