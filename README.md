@@ -1,19 +1,19 @@
-# zprint.el
+# zprint-mode.el
 
 Integrates [zprint](https://github.com/kkinnear/zprint), the pretty-printer for Clojure(Script) files, into Emacs
 
-zprint.el works on macOS and Linux.
+zprint-mode works on macOS and Linux.
 
 ## Installation
 
-Download zprint.el and save it somewhere where emacs can find it.
+Download zprint-mode.el and save it somewhere where emacs can find it.
 
-You only need zprint.el - the zprint graalvm binary is downloaded automagically on first run.
+You only need zprint-mode.el - the zprint graalvm binary is downloaded automagically on first run.
 
 You will probably need to add that directory to Emacs's load path:
 
 ```
-(add-to-list 'load-path "<path-to-zprint-el>")
+(add-to-list 'load-path "<path-to-zprint-mode.el>")
 ```
 
 Then you will need to require the package:
