@@ -37,10 +37,22 @@ if ! [[ -f "$dir/${expected_sha}" ]]; then
     cleanup_temp_dir
 fi
 
-if [[ "${2-}" != "" ]]; then
-    exec "$dir/${expected_sha}" < "$1" > "$2"
-elif [[ "${1-}" != "" ]]; then
-    exec "$dir/${expected_sha}" < "$1"
+inf="${1-}"
+outf="${2-}"
+
+if [[ "$inf" != "" ]]; then
+    result=$("$dir/${expected_sha}" < "$1")
 else
-    exec "$dir/${expected_sha}"
+    result=$("$dir/${expected_sha}")
+fi
+
+if [[ "$result" =~ ^Failed.* ]]; then
+    printf "%s\n" "$result" >&2
+    exit 1
+fi
+
+if [[ "$outf" != "" ]]; then
+    printf "%s\n" "$result" > "$outf"
+else
+    printf "%s\n" "$result"
 fi
