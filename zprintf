@@ -5,9 +5,21 @@ set -euo pipefail
 our_temp_dir=$(mktemp -d 2>/dev/null || mktemp -d -t "our_temp_dir")
 function cleanup_temp_dir() { rm -rf "$our_temp_dir" ; } && trap "cleanup_temp_dir" EXIT
 
-url="https://github.com/kkinnear/zprint/releases/download/0.4.11/zprintm-0.4.11"
+if [[ "$(uname -s)" == Darwin ]]; then
+    os=macos
+else
+    os=linux
+fi
+
+if [[ "$os" == macos ]]; then
+    url="https://github.com/kkinnear/zprint/releases/download/0.4.11/zprintm-0.4.11"
+    expected_sha="dfe2eb7446253c23d91487cf962e9e6ecbbe747f7915caa815ddadcba76b8a93"
+else
+    url="https://github.com/kkinnear/zprint/releases/download/0.4.11/zprintl-0.4.11"
+    expected_sha="9436749ea77c2623b177e85add41c996a873e96bd270927a42a016c531e68a54"
+fi
+
 dir="$HOME/.zprint-cache"
-expected_sha="dfe2eb7446253c23d91487cf962e9e6ecbbe747f7915caa815ddadcba76b8a93"
 
 if ! [[ -f "$dir/${expected_sha}" ]]; then
     mkdir -p "$dir"

@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+fs=require('fs');
+console.log(JSON.stringify(fs.readFileSync('/dev/stdin').toString()));
