@@ -16,4 +16,11 @@
                            ;; ::END::
                            ))))
 
-(provide 'zprint)
+(define-minor-mode zprint-mode
+  "zprint mode"
+  nil " zprint" nil
+  (if zprint-mode
+      (add-hook 'after-save-hook 'zprint nil t)
+    (remove-hook 'after-save-hook 'zprint t)))
+
+(provide 'zprint-mode)

@@ -6,4 +6,4 @@ REPLACEMENT=$(cat zprint-filter | python minifier.py | ./quote-js)
 
 export REPLACEMENT
 
-perl -0777 -i -pe 's/(::START::[^\n]*\n\s*).*(\n[^\n]*::END::)/$1.$ENV{'REPLACEMENT'}.$2/se' zprint.el
+perl -0777 -i -pe 's/(::START::[^\n]*\n\s*).*(\n[^\n]*::END::)/$1.$ENV{'REPLACEMENT'}.$2/se' zprint-mode.el
