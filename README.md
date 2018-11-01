@@ -2,7 +2,7 @@
 
 Integrates [zprint](https://github.com/kkinnear/zprint), the pretty-printer for Clojure(Script) files, into Emacs
 
-zprint-mode is fast (<100ms) because it uses precompiled native binaries. It works on macOS or Linux.
+zprint-mode reformats files quickly (<100ms) because it uses [precompiled native binaries](https://github.com/kkinnear/zprint/blob/master/doc/graalvm.md) of zprint. It works on macOS or Linux.
 
 ## Installation
 
