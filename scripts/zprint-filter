@@ -41,18 +41,18 @@ inf="${1-}"
 outf="${2-}"
 
 if [[ "$inf" != "" ]]; then
-    result=$("$dir/${expected_sha}" < "$1")
+    result=$("$dir/${expected_sha}" < "$1"; echo x)
 else
-    result=$("$dir/${expected_sha}")
+    result=$("$dir/${expected_sha}"; echo x)
 fi
 
 if [[ "$result" =~ ^Failed.* ]]; then
-    printf "%s\n" "$result" >&2
+    printf "%s\n" "${result%?}" >&2
     exit 1
 fi
 
 if [[ "$outf" != "" ]]; then
-    printf "%s\n" "$result" > "$outf"
+    printf "%s" "${result%?}" > "$outf"
 else
-    printf "%s\n" "$result"
+    printf "%s" "${result%?}"
 fi
