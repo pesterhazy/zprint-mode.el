@@ -25,7 +25,6 @@
           (with-current-buffer error-buffer
             (read-only-mode 0)
             (insert-file-contents err-file nil nil nil t)
-            (ansi-color-apply-on-region (point-min) (point-max))
             (special-mode))
           (if (eq retcode 0)
               (progn
