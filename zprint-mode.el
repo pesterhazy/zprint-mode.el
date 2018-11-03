@@ -30,8 +30,11 @@
             (special-mode))
           (if (eq retcode 0)
               (progn
-                (delete-region b e)
-                (insert-file-contents out-file nil nil nil nil)
+                (if mark-active
+                    (progn
+                      (delete-region b e)
+                      (insert-file-contents out-file nil nil nil nil))
+                  (insert-file-contents out-file nil nil nil t))
                 (message "zprint applied"))
             (if is-interactive
                 (display-buffer error-buffer)
