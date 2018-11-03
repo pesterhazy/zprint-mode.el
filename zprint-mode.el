@@ -32,8 +32,13 @@
               (progn
                 (if mark-active
                     (progn
-                      (delete-region b e)
-                      (insert-file-contents out-file nil nil nil nil))
+                      ;; surely this can be done more elegantly?
+                      (when (not (string= (with-temp-buffer
+                                            (insert-file-contents out-file)
+                                            (buffer-string))
+                                          (buffer-substring-no-properties b e)))
+                        (delete-region b e)
+                        (insert-file-contents out-file nil nil nil nil)))
                   (insert-file-contents out-file nil nil nil t))
                 (message "zprint applied"))
             (if is-interactive
