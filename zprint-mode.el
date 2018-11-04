@@ -1,3 +1,32 @@
+;;; zprint-mode.el --- reformat Clojure(Script) code using zprint
+
+;; Author: Paulus Esterhazy (pesterhazy@gmail.com)
+;; URL: https://github.com/pesterhazy/zprint-mode.el
+;; Version: 0.1
+;; Keywords: clojure, clojurescript, edn, zprint, formatting
+
+;; This file is NOT part of GNU Emacs.
+
+;; zprint-mode.el is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; zprint-mode.el is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with zprint-mode.el.
+;; If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Reformat Clojure(Script) code using zprint
+
+;;; Code:
+
 (defun zprint (&optional is-interactive)
   (interactive)
   (let* ((b (if mark-active (min (point) (mark)) (point-min)))
@@ -48,11 +77,14 @@
       (delete-file err-file)
       (delete-file out-file))))
 
+;;;###autoload
 (define-minor-mode zprint-mode
-  "zprint mode"
-  nil " zprint" nil
+  "Minor mode for reformatting Clojure(Script) code using zprint"
+  :lighter " zprint"
   (if zprint-mode
       (add-hook 'after-save-hook 'zprint nil t)
     (remove-hook 'after-save-hook 'zprint t)))
 
 (provide 'zprint-mode)
+
+;;; zprint-mode.el ends here
