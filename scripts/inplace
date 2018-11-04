@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# start our_temp_dir: v1
+our_temp_dir=$(mktemp -d 2>/dev/null || mktemp -d -t 'our_temp_dir')
+function cleanup_temp_dir() { rm -rf "$our_temp_dir" ; } && trap "cleanup_temp_dir" EXIT
+# end our_temp_dir
+
+if (( "$#" < 2 )); then
+    echo "Not enough arguments" >&2
+    echo "inplace pipes a file through a Unix command, updating its contents in place" >&2
+    echo >&2
+    echo "Syntax: inplace <filename> <command> [optional arg ..]" >&2
+    exit 1
+fi
+
+fname="$1"
+shift
+
+if [[ ! -f "$fname" ]]; then
+    printf "Not a regular file: %s\n" "$fname" >&2
+    exit 1
+fi
+
+
+"$@" <"$fname" >"$our_temp_dir/out"
+cp "$our_temp_dir/out" "$fname"
