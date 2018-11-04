@@ -29,6 +29,10 @@
 ;;; Code:
 
 (defun zprint (&optional is-interactive)
+  "Reformat code using zprint.
+If region is active, reformat it; otherwise reformat entire buffer.
+When called interactively, or with prefix argument IS-INTERACTIVE,
+show a buffer if the formatting fails"
   (interactive)
   (let* ((b (if mark-active (min (point) (mark)) (point-min)))
          (e (if mark-active (max (point) (mark)) (point-max)))
