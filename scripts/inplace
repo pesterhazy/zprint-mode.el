@@ -15,14 +15,15 @@ if (( "$#" < 2 )); then
     exit 1
 fi
 
-fname="$1"
+f="$1"
+t="$our_temp_dir/out"
 shift
 
-if [[ ! -f "$fname" ]]; then
-    printf "Not a regular file: %s\n" "$fname" >&2
+if [[ ! -f "$f" ]]; then
+    printf "Not a regular file: %s\n" "$f" >&2
     exit 1
 fi
 
 
-"$@" <"$fname" >"$our_temp_dir/out"
-cp "$our_temp_dir/out" "$fname"
+"$@" <"$f" >"$t"
+cp "$t" "$f"
