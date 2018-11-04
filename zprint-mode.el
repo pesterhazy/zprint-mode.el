@@ -3,7 +3,8 @@
 ;; Author: Paulus Esterhazy (pesterhazy@gmail.com)
 ;; URL: https://github.com/pesterhazy/zprint-mode.el
 ;; Version: 0.1
-;; Keywords: clojure, clojurescript, edn, zprint, formatting
+;; Keywords: tools
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This file is NOT part of GNU Emacs.
 
