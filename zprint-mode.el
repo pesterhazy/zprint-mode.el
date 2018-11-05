@@ -87,8 +87,8 @@ show a buffer if the formatting fails"
   "Minor mode for reformatting Clojure(Script) code using zprint"
   :lighter " zprint"
   (if zprint-mode
-      (add-hook 'after-save-hook 'zprint nil t)
-    (remove-hook 'after-save-hook 'zprint t)))
+      (add-hook 'before-save-hook 'zprint nil t)
+    (remove-hook 'before-save-hook 'zprint t)))
 
 (provide 'zprint-mode)
 
