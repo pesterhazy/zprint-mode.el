@@ -6,24 +6,17 @@ zprint-mode reformats files quickly (<100ms) because it uses [precompiled native
 
 ## Installation
 
-Download zprint-mode.el and save it somewhere where emacs can find it, e.g. `~/.emacs.d/lisp/`.
-
-You only need zprint-mode.el - the zprint graalvm binary is downloaded automagically on first run.
-
-You will probably need to add that directory to Emacs's load path:
+The recommended way is to use [MELPA](https://melpa.org/). If MELPA is in your package-archives, do
 
 ```
-# e.g.
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+M-x package-install RET rainbow-delimiters RET
 ```
 
-Then you will need to require the package:
+If you use Spacemacs, you can add `zprint-mode` to `dotspacemacs-additional-packages` and use `SPC f e R` to reload the packages.
 
-```
-(require 'zprint-mode)
-```
+See below for manual installation instructions.
 
-## Manual usage
+## Ad-hoc usage
 
 Filter the current buffer through zprint my invoking `M-x zprint`.
 
@@ -54,6 +47,25 @@ If you're feeling adventurous, you can enable zprint-mode for all Clojure(Script
 ```
 (add-hook 'clojure-mode-hook 'zprint-mode)
 (add-hook 'clojurescript-mode-hook 'zprint-mode)
+```
+
+## Manual installation
+
+Download zprint-mode.el and save it somewhere where emacs can find it, e.g. `~/.emacs.d/lisp/`.
+
+You only need zprint-mode.el - the zprint graalvm binary is downloaded automagically on first run.
+
+You will probably need to add that directory to Emacs's load path:
+
+```
+# e.g.
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+```
+
+Then you will need to require the package:
+
+```
+(require 'zprint-mode)
 ```
 
 ## Author
