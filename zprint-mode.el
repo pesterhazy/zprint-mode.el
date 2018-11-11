@@ -28,6 +28,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (defun zprint (&optional is-interactive)
   "Reformat code using zprint.
 If region is active, reformat it; otherwise reformat entire buffer.
