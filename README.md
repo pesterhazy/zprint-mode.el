@@ -9,7 +9,7 @@ zprint-mode reformats files quickly (<100ms) because it uses [precompiled native
 The recommended way is to use [MELPA](https://melpa.org/). If MELPA is in your package-archives, do
 
 ```
-M-x package-install RET rainbow-delimiters RET
+M-x package-install RET zprint-mode RET
 ```
 
 If you use Spacemacs, you can add `zprint-mode` to `dotspacemacs-additional-packages` and use `SPC f e R` to reload the packages.
