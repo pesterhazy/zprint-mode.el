@@ -54,7 +54,7 @@ show a buffer if the formatting fails"
                                 (list (current-buffer) err-file)
                                 nil
                                 (concat zprint-mode-dir
-                                        (file-name-as-directory "scripts")
+                                        (file-name-as-directory "bin")
                                         "wrap-zprint")
                                 in-file
                                 out-file))))
