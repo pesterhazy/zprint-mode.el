@@ -8,13 +8,13 @@ zprint-mode reformats files quickly (<100ms) because it uses [precompiled native
 
 ## Changelog
 
-### 0.2
+### 0.2 (2019-11-30)
 
 Upgrade to zprint 0.5.3
 
 Fix Python 3 compatibility
 
-### 0.1
+### 0.1 (2018-11-11)
 
 Initial release
 
