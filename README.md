@@ -4,6 +4,18 @@ Integrates [zprint](https://github.com/kkinnear/zprint), the pretty-printer for 
 
 zprint-mode reformats files quickly (<100ms) because it uses [precompiled native binaries](https://github.com/kkinnear/zprint/blob/master/doc/graalvm.md) of zprint. It works on macOS or Linux.
 
+## Changelog
+
+### 0.2
+
+Upgrade to zprint 0.5.3
+
+Fix Python 3 compatibility
+
+### 0.1
+
+Initial release
+
 ## Installation
 
 The recommended way is to use [MELPA](https://melpa.org/). If MELPA is in your package-archives, do
