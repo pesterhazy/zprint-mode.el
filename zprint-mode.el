@@ -90,12 +90,6 @@ show a buffer if the formatting fails"
       (add-hook 'before-save-hook 'zprint nil t)
     (remove-hook 'before-save-hook 'zprint t)))
 
-(defun banana ()
-  (interactive)
-  (message "script: %s" (concat zprint-mode-dir
-                                (file-name-as-directory "scripts")
-                                "banana")))
-
 (provide 'zprint-mode)
 
 ;;; zprint-mode.el ends here
