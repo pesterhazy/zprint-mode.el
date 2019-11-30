@@ -6,14 +6,14 @@ function cleanup_temp_dir() { rm -rf "$our_temp_dir" ; } && trap "cleanup_temp_d
 
 set -x
 
-ret=0 && scripts/wrap-zprint test/samples/good.clj "$our_temp_dir/out.clj" || ret=$?
+ret=0 && scripts/wrap-zprint tests/samples/good.clj "$our_temp_dir/out.clj" || ret=$?
 
 if [[ "$ret" != 0 ]]; then
     echo Assertion failed
     exit 1
 fi
 
-ret=0 && scripts/wrap-zprint test/samples/bad.clj "$our_temp_dir/out.clj" || ret=$?
+ret=0 && scripts/wrap-zprint tests/samples/bad.clj "$our_temp_dir/out.clj" || ret=$?
 
 if [[ "$ret" == 0 ]]; then
     echo Assertion failed
