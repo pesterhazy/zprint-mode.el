@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+our_temp_dir=$(mktemp -d 2>/dev/null || mktemp -d -t "our_temp_dir")
+function cleanup_temp_dir() { rm -rf "$our_temp_dir" ; } && trap "cleanup_temp_dir" EXIT
+
+if [[ "$(uname -s)" == Darwin ]]; then
+    os=macos
+else
+    os=linux
+fi
+
+if [[ "$os" == macos ]]; then
+    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintm-0.5.3"
+    expected_sha="60dc367b2f57a930940a1129a07f9152613d115bf02ae8646e77c22540391c5f"
+else
+    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintl-0.5.3"
+    expected_sha="658bd78be670dbf1bc8484e5f94b36735cdfa375fe38909435be0e9687e296a9"
+fi
+
+dir="$HOME/.zprint-cache"
+
+if ! [[ -f "$dir/${expected_sha}" ]]; then
+    mkdir -p "$dir"
+
+    curl -SL -o "$our_temp_dir/zprint" "$url"
+    actual_sha="$(python -c "import sys,hashlib; m=hashlib.sha256(); f=open(sys.argv[1],'rb') if len(sys.argv)>1 else sys.stdin; m.update(f.read()); print(m.hexdigest())" "$our_temp_dir/zprint")"
+    if [[ "$actual_sha" != "$expected_sha" ]]; then
+        printf 'Sha mismatch. Expected=%s Actual=%s\n' "$expected_sha" "$actual_sha"
+        exit 1
+    fi
+
+    chmod +x "$our_temp_dir/zprint"
+
+    mv "$our_temp_dir/zprint" "$dir/${expected_sha}"
+    cleanup_temp_dir
+fi
+
+inf="${1-}"
+outf="${2-}"
+
+if [[ "$inf" == "" ]]; then
+    "$dir/${expected_sha}"
+elif  [[ "$outf" == "" ]]; then
+    "$dir/${expected_sha}" < "$inf"
+else
+    "$dir/${expected_sha}" < "$inf" > "$outf"
+fi
