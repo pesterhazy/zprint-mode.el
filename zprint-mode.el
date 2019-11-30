@@ -1,4 +1,4 @@
-;;; zprint-mode.el --- reformat Clojure(Script) code using zprint
+;;; zprint-mode.el --- Reformat Clojure(Script) code using zprint
 
 ;; Author: Paulus Esterhazy (pesterhazy@gmail.com)
 ;; URL: https://github.com/pesterhazy/zprint-mode.el
