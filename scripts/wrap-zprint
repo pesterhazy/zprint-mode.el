@@ -12,11 +12,11 @@ else
 fi
 
 if [[ "$os" == macos ]]; then
-    url="https://github.com/kkinnear/zprint/releases/download/0.4.11/zprintm-0.4.11"
-    expected_sha="dfe2eb7446253c23d91487cf962e9e6ecbbe747f7915caa815ddadcba76b8a93"
+    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintm-0.5.3"
+    expected_sha="60dc367b2f57a930940a1129a07f9152613d115bf02ae8646e77c22540391c5f"
 else
-    url="https://github.com/kkinnear/zprint/releases/download/0.4.11/zprintl-0.4.11"
-    expected_sha="9436749ea77c2623b177e85add41c996a873e96bd270927a42a016c531e68a54"
+    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintl-0.5.3"
+    expected_sha="658bd78be670dbf1bc8484e5f94b36735cdfa375fe38909435be0e9687e296a9"
 fi
 
 dir="$HOME/.zprint-cache"
@@ -27,7 +27,7 @@ if ! [[ -f "$dir/${expected_sha}" ]]; then
     curl -SL -o "$our_temp_dir/zprint" "$url"
     actual_sha="$(python -c "import sys,hashlib; m=hashlib.sha256(); f=open(sys.argv[1]) if len(sys.argv)>1 else sys.stdin; m.update(f.read()); print(m.hexdigest())" "$our_temp_dir/zprint")"
     if [[ "$actual_sha" != "$expected_sha" ]]; then
-        printf "Sha mismatch. Expected=%s Actual=%s\n" "$expected_sha" "$actual_sha"
+        printf 'Sha mismatch. Expected=%s Actual=%s\n' "$expected_sha" "$actual_sha"
         exit 1
     fi
 
@@ -40,19 +40,10 @@ fi
 inf="${1-}"
 outf="${2-}"
 
-if [[ "$inf" != "" ]]; then
-    result=$("$dir/${expected_sha}" < "$1"; echo x)
+if [[ "$inf" == "" ]]; then
+    "$dir/${expected_sha}"
+elif  [[ "$outf" == "" ]]; then
+    "$dir/${expected_sha}" < "$inf"
 else
-    result=$("$dir/${expected_sha}"; echo x)
-fi
-
-if [[ "$result" =~ ^Failed.* ]]; then
-    printf "%s\n" "${result%?}" >&2
-    exit 1
-fi
-
-if [[ "$outf" != "" ]]; then
-    printf "%s" "${result%?}" > "$outf"
-else
-    printf "%s" "${result%?}"
+    "$dir/${expected_sha}" < "$inf" > "$outf"
 fi
