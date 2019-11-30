@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail && cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+cd test/linux
+docker build . -t zprint-mode
