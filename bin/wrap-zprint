@@ -12,11 +12,11 @@ else
 fi
 
 if [[ "$os" == macos ]]; then
-    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintm-0.5.3"
-    expected_sha="60dc367b2f57a930940a1129a07f9152613d115bf02ae8646e77c22540391c5f"
+    url="https://github.com/kkinnear/zprint/releases/download/1.0.0/zprintm-1.0.0"
+    expected_sha="d3182c529b8a7d402791e398bbf0e42d73511fd4a652ad57a90d7ce6104430c7"
 else
-    url="https://github.com/kkinnear/zprint/releases/download/0.5.3/zprintl-0.5.3"
-    expected_sha="658bd78be670dbf1bc8484e5f94b36735cdfa375fe38909435be0e9687e296a9"
+    url="https://github.com/kkinnear/zprint/releases/download/1.0.0/zprintl-1.0.0"
+    expected_sha="d3182c529b8a7d402791e398bbf0e42d73511fd4a652ad57a90d7ce6104430c7"
 fi
 
 dir="$HOME/.zprint-cache"
