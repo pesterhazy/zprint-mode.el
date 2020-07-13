@@ -25,7 +25,17 @@ if ! [[ -f "$dir/${expected_sha}" ]]; then
     mkdir -p "$dir"
 
     curl -SL -o "$our_temp_dir/zprint" "$url"
-    actual_sha="$(python -c "import sys,hashlib; m=hashlib.sha256(); f=open(sys.argv[1],'rb') if len(sys.argv)>1 else sys.stdin; m.update(f.read()); print(m.hexdigest())" "$our_temp_dir/zprint")"
+
+    if hash python; then
+      python_cmd=python
+    elif hash python3; then
+      python_cmd=python3
+    else
+      echo "python is not installed"
+      exit 1
+    fi
+
+    actual_sha="$("$python_cmd" -c "import sys,hashlib; m=hashlib.sha256(); f=open(sys.argv[1],'rb') if len(sys.argv)>1 else sys.stdin; m.update(f.read()); print(m.hexdigest())" "$our_temp_dir/zprint")"
     if [[ "$actual_sha" != "$expected_sha" ]]; then
         printf 'Sha mismatch. Expected=%s Actual=%s\n' "$expected_sha" "$actual_sha"
         exit 1
