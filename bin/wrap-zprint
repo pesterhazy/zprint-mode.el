@@ -13,7 +13,7 @@ fi
 
 if [[ "$os" == macos ]]; then
     url="https://github.com/kkinnear/zprint/releases/download/1.0.0/zprintm-1.0.0"
-    expected_sha="d3182c529b8a7d402791e398bbf0e42d73511fd4a652ad57a90d7ce6104430c7"
+    expected_sha="b707f1188c175c2028c014f0ae88cb384283aa6d097bb31298d66852162581b1"
 else
     url="https://github.com/kkinnear/zprint/releases/download/1.0.0/zprintl-1.0.0"
     expected_sha="d3182c529b8a7d402791e398bbf0e42d73511fd4a652ad57a90d7ce6104430c7"
