@@ -8,6 +8,10 @@ zprint-mode reformats files quickly (<100ms) because it uses [precompiled native
 
 ## Changelog
 
+### 0.4 (2024-06-17)
+
+Upgrade to zprint 1.2.9
+
 ### 0.3 (2020-07-13)
 
 Upgrade to zprint 1.0.0

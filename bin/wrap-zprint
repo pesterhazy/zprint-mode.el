@@ -18,14 +18,14 @@ else
 fi
 
 if [[ "$os" == macos && "$arch" == arm ]]; then
-    url="https://github.com/kkinnear/zprint/releases/download/1.2.8/zprintma-1.2.8"
-    expected_sha="11246e16db97cb03649bf67938455c7cb25a3326a7e99e45d019b0ae405d8c3d"
+    url="https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintma-1.2.9"
+    expected_sha="25cb06b8f3721a8f7fb5a9731c139126ad268a51592cce1df2927a0e9422f4fe"
 elif [[ "$os" == macos ]]; then
-    url="https://github.com/kkinnear/zprint/releases/download/1.2.8/zprintm-1.2.8"
-    expected_sha="03c146a2d411325114f38d211c3d4a9f2ab837b9287c46a7387114319253b2bd"
+    url="https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintm-1.2.9"
+    expected_sha="963ccce9cc48195acea17b18477d6a19f16f31059d1652e321a5ea52cddea280"
 else
-    url="https://github.com/kkinnear/zprint/releases/download/1.2.8/zprintl-1.2.8"
-    expected_sha="ca6193aa2499ed6bb87c3d5a62cc0a957ab93fea62735fbda6ef7c095d81f2ce"
+    url="https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintl-1.2.9"
+    expected_sha="ed2f056ea8108c81bfd8c16ce01cc81aae4a61ec3f23faf94571b8f64c3ecece"
 fi
 
 dir="$HOME/.zprint-cache"
